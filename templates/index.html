@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f3ef">
+  <meta name="description" content="把中文音樂靈感翻譯成流暢的英文 Suno AI 音樂提示詞。">
+  <title>Suno Prompt Studio｜音樂提示詞翻譯</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="Suno Prompt Studio 首頁"><span class="brand-mark">♫</span><span>Suno<span class="brand-light">Prompt Studio</span></span></a>
+    <span class="top-note"><span class="status-dot"></span> 為靈感，找到它的聲音</span>
+  </header>
+
+  <main>
+    <section class="intro">
+      <div class="eyebrow"><span></span> YOUR IDEA, IN SOUND</div>
+      <h1>讓靈感，唱成<span>另一種語言。</span></h1>
+      <p>用中文寫下腦海裡的音樂畫面，轉成 Suno AI 聽得懂的英文提示詞。</p>
+    </section>
+
+    <section class="workspace" aria-label="音樂提示詞翻譯器">
+      <div class="panel input-panel">
+        <div class="panel-head"><div><span class="step">01</span><h2>寫下你的音樂想像</h2></div><span class="language-tag">中文 <span>→</span> ENGLISH</span></div>
+        <label class="sr-only" for="source">中文音樂描述</label>
+        <textarea id="source" maxlength="5000" placeholder="例如：一首溫暖懷舊的華語流行歌，女聲演唱，鋼琴搭配弦樂，像在深夜想念一個人，副歌情緒逐漸堆疊……"></textarea>
+        <div class="input-foot"><span id="count">0 / 5,000</span><button id="clear" class="text-button" type="button">清除內容</button></div>
+        <div class="chips-label">不知道從哪開始？試試靈感</div>
+        <div class="chips"><button type="button" class="chip" data-prompt="一首夢幻慵懶的獨立流行樂，柔和女聲、溫暖合成器和輕盈鼓點，像夏日黃昏的海邊散步。">☼　夢幻獨立流行</button><button type="button" class="chip" data-prompt="一首充滿力量的電影配樂，磅礡弦樂、深沉鼓聲，從安靜開始逐漸推向壯闊高潮。">◈　電影感史詩配樂</button><button type="button" class="chip" data-prompt="一首復古放克舞曲，俐落貝斯線、銅管樂和有感染力的男聲，讓人忍不住跟著節奏跳舞。">♫　復古放克舞曲</button></div>
+      </div>
+
+      <div class="connector" aria-hidden="true"><span>✦</span></div>
+
+      <div class="panel output-panel">
+        <div class="panel-head"><div><span class="step">02</span><h2>你的英文提示詞</h2></div><span class="language-tag output-tag"><span class="status-dot"></span> READY TO CREATE</span></div>
+        <div id="result" class="result" aria-live="polite"><div class="empty-state"><div class="sound-icon">♫</div><strong>你的英文提示詞會出現在這裡</strong><span>描述越具體，越容易得到理想的音樂</span></div></div>
+        <div class="output-foot"><span id="resultMeta">SUNO-READY PROMPT</span><button id="copy" class="copy-button" type="button" disabled><span>▢</span> 複製提示詞</button></div>
+      </div>
+    </section>
+
+    <div class="action-row"><span id="message" class="message" role="status"></span><button id="translate" class="translate-button" type="button"><span class="button-sparkle">✦</span> 翻譯成英文 <span class="button-arrow">→</span></button></div>
+    <div class="tips"><span>✧</span> 加入曲風、樂器、情緒與人聲描述，讓 Suno 更懂你的想法</div>
+  </main>
+
+  <footer><span>用一段文字，開啟一首歌。</span><span>MADE FOR MUSIC MAKERS <span class="footer-note">·</span> SUNO AI PROMPT TOOL</span></footer>
+  <script src="{{ url_for('static', filename='app.js') }}" defer></script>
+</body>
+</html>
